@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<universite nom="Faculté des Sciences de Sfax" anneeUniversitaire="2026-2027">
+    <etudiants>
+        <etudiant id="E001" >
+            <nom>Messi </nom>
+            <prenom>Lionel</prenom>
+            <dateNaissance>2004-03-15</dateNaissance>
+            <email>lionelmessi@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>3</niveau>
+            <moyenne>20.00</moyenne>
+        </etudiant>
+        <etudiant id="E002" >
+            <nom>Ronaldo</nom>
+            <prenom>Cristiano</prenom>
+            <dateNaissance>2003-11-02</dateNaissance>
+            <email>cristiano@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>3</niveau>
+            <moyenne>1.00</moyenne>
+        </etudiant>
+        <etudiant id="E003" >
+            <nom>Gharbi</nom>
+            <prenom>Youssef</prenom>
+            <dateNaissance>2002-07-21</dateNaissance>
+            <email>youssef.gharbi@fss.tn</email>
+            <filiere>RSI</filiere>
+            <niveau>2</niveau>
+            <moyenne>9.80</moyenne>
+        </etudiant>
+        <etudiant id="E004" >
+            <nom>Mansour</nom>
+            <prenom>Ines</prenom>
+            <dateNaissance>2004-01-30</dateNaissance>
+            <email>ines.mansour@fss.tn</email>
+            <filiere>DSI</filiere>
+            <niveau>2</niveau>
+            <moyenne>12.40</moyenne>
+        </etudiant>
+        <etudiant id="E005" >
+            <nom>Jlassi</nom>
+            <prenom>Amine</prenom>
+            <dateNaissance>2003-05-09</dateNaissance>
+            <email>amine.jlassi@fss.tn</email>
+            <filiere>IIA</filiere>
+            <niveau>3</niveau>
+            <moyenne>15.10</moyenne>
+        </etudiant>
+        <etudiant id="E006" >
+            <nom>Khlif</nom>
+            <prenom>Rania</prenom>
+            <dateNaissance>2002-12-12</dateNaissance>
+            <email>rania.khlif@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>3</niveau>
+            <moyenne>11.35</moyenne>
+        </etudiant>
+    </etudiants>
+</universite>
