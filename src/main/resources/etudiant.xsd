@@ -1,50 +1,380 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="IdDepartement">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="D\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IdEnseignant">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="P\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IdMatiere">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="M\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IdSalle">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="S\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IdEtudiant">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="E\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IdSeance">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="SE\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CodeFiliere">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TexteNonVide">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Niveau">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="Semestre">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="Moyenne">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="20"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="Grade">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Professeur"/>
+            <xs:enumeration value="Maître de Conférences"/>
+            <xs:enumeration value="Maître Assistant"/>
+            <xs:enumeration value="Assistant"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TypeSalle">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Amphi"/>
+            <xs:enumeration value="TD"/>
+            <xs:enumeration value="Laboratoire"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TypeSeance">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Cours"/>
+            <xs:enumeration value="TD"/>
+            <xs:enumeration value="TP"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Jour">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Lundi"/>
+            <xs:enumeration value="Mardi"/>
+            <xs:enumeration value="Mercredi"/>
+            <xs:enumeration value="Jeudi"/>
+            <xs:enumeration value="Vendredi"/>
+            <xs:enumeration value="Samedi"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Heure">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([01]\d|2[0-3]):[0-5]\d"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Isbn">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="978-\d-\d{2}-\d{6}-\d"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Annee">
+        <xs:restriction base="xs:gYear"/>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="AnneeUniversitaire">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4}-\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="DepartementType">
+        <xs:sequence>
+            <xs:element name="nom" type="TexteNonVide"/>
+            <xs:element name="chefDepartementRef" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdDepartement" use="required"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="FiliereType">
+        <xs:sequence>
+            <xs:element name="intitule" type="TexteNonVide"/>
+            <xs:element name="departementRef" type="xs:string"/>
+            <xs:element name="responsableRef" type="xs:string"/>
+            <xs:element name="dureeAnnees" type="xs:positiveInteger"/>
+        </xs:sequence>
+        <xs:attribute name="code" type="CodeFiliere" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="EnseignantType">
+        <xs:sequence>
+            <xs:element name="nom" type="TexteNonVide"/>
+            <xs:element name="prenom" type="TexteNonVide"/>
+            <xs:element name="grade" type="Grade"/>
+            <xs:element name="specialite" type="TexteNonVide"/>
+            <xs:element name="email" type="Email"/>
+            <xs:element name="departementRef" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdEnseignant" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="MatiereType">
+        <xs:sequence>
+            <xs:element name="intitule" type="TexteNonVide"/>
+            <xs:element name="filiereRef" type="CodeFiliere"/>
+            <xs:element name="niveau" type="Niveau"/>
+            <xs:element name="semestre" type="Semestre"/>
+            <xs:element name="coefficient" type="xs:positiveInteger"/>
+            <xs:element name="credits" type="xs:positiveInteger"/>
+            <xs:element name="enseignantRef" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdMatiere" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="SalleType">
+        <xs:sequence>
+            <xs:element name="nom" type="TexteNonVide"/>
+            <xs:element name="capacite" type="xs:positiveInteger"/>
+            <xs:element name="bloc" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdSalle" use="required"/>
+        <xs:attribute name="type" type="TypeSalle" use="required"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="EtudiantType">
+        <xs:sequence>
+            <xs:element name="nom" type="TexteNonVide"/>
+            <xs:element name="prenom" type="TexteNonVide"/>
+            <xs:element name="dateNaissance" type="xs:date"/>
+            <xs:element name="email" type="Email"/>
+            <xs:element name="filiere" type="CodeFiliere"/>
+            <xs:element name="niveau" type="Niveau"/>
+            <xs:element name="moyenne" type="Moyenne"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdEtudiant" use="required"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="SeanceType">
+        <xs:sequence>
+            <xs:element name="matiereRef" type="xs:string"/>
+            <xs:element name="salleRef" type="xs:string"/>
+            <xs:element name="jour" type="Jour"/>
+            <xs:element name="heureDebut" type="Heure"/>
+            <xs:element name="heureFin" type="Heure"/>
+            <xs:element name="type" type="TypeSeance"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdSeance" use="required"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="LivreType">
+        <xs:sequence>
+            <xs:element name="titre" type="TexteNonVide"/>
+            <xs:element name="auteur" type="TexteNonVide"/>
+            <xs:element name="annee" type="Annee"/>
+            <xs:element name="exemplairesDisponibles" type="xs:nonNegativeInteger"/>
+        </xs:sequence>
+        <xs:attribute name="isbn" type="Isbn" use="required"/>
+    </xs:complexType>
+
+
 
     <xs:element name="universite">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="etudiants">
+
+                <xs:element name="departements">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="etudiant"
-                                        minOccurs="1"
-                                        maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="nom"
-                                                    type="xs:string"/>
-                                        <xs:element name="prenom"
-                                                    type="xs:string"/>
-                                        <xs:element name="dateNaissance"
-                                                    type="xs:date"/>
-                                        <xs:element name="email"
-                                                    type="xs:string"/>
-                                        <xs:element name="filiere"
-                                                    type="xs:string"/>
-                                        <xs:element name="niveau"
-                                                    type="xs:positiveInteger"/>
-                                        <xs:element name="moyenne"
-                                                    type="xs:decimal"/>
-                                    </xs:sequence>
-
-                                    <xs:attribute name="id"
-                                                  type="xs:ID"
-                                                  use="required"/>
-                                </xs:complexType>
-                            </xs:element>
+                            <xs:element name="departement" type="DepartementType" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+
+                <xs:element name="filieres">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="filiere" type="FiliereType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="enseignants">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="enseignant" type="EnseignantType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="matieres">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="matiere" type="MatiereType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="salles">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="salle" type="SalleType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="etudiants">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="etudiant" type="EtudiantType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="emploiDuTemps">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="seance" type="SeanceType" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="bibliotheque">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="livre" type="LivreType" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
             </xs:sequence>
 
-            <xs:attribute name="nom"
-                          type="xs:string"
-                          use="required"/>
-            <xs:attribute name="anneeUniversitaire"
-                          type="xs:string"
-                          use="required"/>
+            <xs:attribute name="nom" type="TexteNonVide" use="required"/>
+            <xs:attribute name="anneeUniversitaire" type="AnneeUniversitaire" use="required"/>
         </xs:complexType>
+
+
+
+        <xs:key name="cleDepartement">
+            <xs:selector xpath="departements/departement"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:key name="cleFiliere">
+            <xs:selector xpath="filieres/filiere"/>
+            <xs:field xpath="@code"/>
+        </xs:key>
+
+        <xs:key name="cleEnseignant">
+            <xs:selector xpath="enseignants/enseignant"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:key name="cleMatiere">
+            <xs:selector xpath="matieres/matiere"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:key name="cleSalle">
+            <xs:selector xpath="salles/salle"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+
+        <xs:keyref name="refChefDepartement" refer="cleEnseignant">
+            <xs:selector xpath="departements/departement"/>
+            <xs:field xpath="chefDepartementRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refDepartementFiliere" refer="cleDepartement">
+            <xs:selector xpath="filieres/filiere"/>
+            <xs:field xpath="departementRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refResponsableFiliere" refer="cleEnseignant">
+            <xs:selector xpath="filieres/filiere"/>
+            <xs:field xpath="responsableRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refDepartementEnseignant" refer="cleDepartement">
+            <xs:selector xpath="enseignants/enseignant"/>
+            <xs:field xpath="departementRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refFiliereMatiere" refer="cleFiliere">
+            <xs:selector xpath="matieres/matiere"/>
+            <xs:field xpath="filiereRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refEnseignantMatiere" refer="cleEnseignant">
+            <xs:selector xpath="matieres/matiere"/>
+            <xs:field xpath="enseignantRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refFiliereEtudiant" refer="cleFiliere">
+            <xs:selector xpath="etudiants/etudiant"/>
+            <xs:field xpath="filiere"/>
+        </xs:keyref>
+
+        <xs:keyref name="refMatiereSeance" refer="cleMatiere">
+            <xs:selector xpath="emploiDuTemps/seance"/>
+            <xs:field xpath="matiereRef"/>
+        </xs:keyref>
+
+        <xs:keyref name="refSalleSeance" refer="cleSalle">
+            <xs:selector xpath="emploiDuTemps/seance"/>
+            <xs:field xpath="salleRef"/>
+        </xs:keyref>
     </xs:element>
 
 </xs:schema>
+

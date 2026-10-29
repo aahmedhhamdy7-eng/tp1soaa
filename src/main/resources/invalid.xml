@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ERREUR 1 : anneeUniversitaire doit être au format AAAA-AAAA -->
+<universite nom="Faculté des Sciences de Sfax" anneeUniversitaire="2026">
+
+    <departements>
+        <departement id="D01">
+            <nom>Informatique</nom>
+            <!-- ERREUR 2 : P99 n'existe pas (keyref refChefDepartement) -->
+            <chefDepartementRef>P99</chefDepartementRef>
+        </departement>
+        <!-- ERREUR 3 : id doit respecter le format D + 2 chiffres -->
+        <departement id="DEP2">
+            <nom>Mathématiques</nom>
+            <chefDepartementRef>P04</chefDepartementRef>
+        </departement>
+    </departements>
+
+    <filieres>
+        <filiere code="LSI">
+            <intitule>Licence en Systèmes d'Information</intitule>
+            <departementRef>D01</departementRef>
+            <responsableRef>P01</responsableRef>
+            <dureeAnnees>3</dureeAnnees>
+        </filiere>
+        <!-- ERREUR 4 : code doit contenir exactement 3 lettres majuscules -->
+        <filiere code="is">
+            <intitule>Ingénierie des Systèmes d'Information</intitule>
+            <departementRef>D01</departementRef>
+            <responsableRef>P03</responsableRef>
+            <dureeAnnees>3</dureeAnnees>
+        </filiere>
+    </filieres>
+
+    <enseignants>
+        <enseignant id="P01">
+            <nom>Trabelsi</nom>
+            <prenom>Mohamed</prenom>
+            <!-- ERREUR 5 : grade hors de la liste autorisée -->
+            <grade>Docteur</grade>
+            <specialite>Génie Logiciel</specialite>
+            <email>mohamed.trabelsi@fss.tn</email>
+            <departementRef>D01</departementRef>
+        </enseignant>
+        <enseignant id="P03">
+            <nom>Gharbi</nom>
+            <prenom>Karim</prenom>
+            <grade>Assistant</grade>
+            <specialite>Réseaux et Télécommunications</specialite>
+            <!-- ERREUR 6 : email sans @ -->
+            <email>karim.gharbi.fss.tn</email>
+            <departementRef>D01</departementRef>
+        </enseignant>
+        <enseignant id="P04">
+            <nom>Jebali</nom>
+            <prenom>Sonia</prenom>
+            <grade>Maître Assistant</grade>
+            <specialite>Analyse Numérique</specialite>
+            <email>sonia.jebali@fss.tn</email>
+            <departementRef>D02</departementRef>
+        </enseignant>
+    </enseignants>
+
+    <matieres>
+        <matiere id="M01">
+            <intitule>Programmation Web</intitule>
+            <filiereRef>LSI</filiereRef>
+            <!-- ERREUR 7 : niveau doit être entre 1 et 3 -->
+            <niveau>5</niveau>
+            <semestre>1</semestre>
+            <coefficient>2</coefficient>
+            <credits>4</credits>
+            <enseignantRef>P01</enseignantRef>
+        </matiere>
+        <matiere id="M02">
+            <intitule>Bases de Données Avancées</intitule>
+            <filiereRef>LSI</filiereRef>
+            <niveau>3</niveau>
+            <semestre>1</semestre>
+            <coefficient>3</coefficient>
+            <!-- ERREUR 8 : l'élément obligatoire <credits> est absent -->
+            <enseignantRef>P01</enseignantRef>
+        </matiere>
+    </matieres>
+
+    <salles>
+        <!-- ERREUR 9 : type de salle non autorisé -->
+        <salle id="S01" type="Cafeteria">
+            <nom>Amphi A</nom>
+            <!-- ERREUR 10 : capacité doit être un entier positif -->
+            <capacite>-200</capacite>
+            <bloc>A</bloc>
+        </salle>
+        <!-- ERREUR 11 : attribut obligatoire "type" manquant -->
+        <salle id="S02">
+            <nom>Salle TD 12</nom>
+            <capacite>35</capacite>
+            <bloc>B</bloc>
+        </salle>
+    </salles>
+
+    <etudiants>
+        <etudiant id="E001">
+            <nom>henteti</nom>
+            <prenom>islem</prenom>
+            <!-- ERREUR 12 : date au mauvais format (attendu AAAA-MM-JJ) -->
+            <dateNaissance>13/09/2005</dateNaissance>
+            <email>islemhenteti@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>3</niveau>
+            <!-- ERREUR 13 : moyenne doit être comprise entre 0 et 20 -->
+            <moyenne>25.50</moyenne>
+        </etudiant>
+        <!-- ERREUR 14 : identifiant E001 déjà utilisé (doublon xs:ID) -->
+        <etudiant id="E001">
+            <nom>hamdi</nom>
+            <prenom>ahmed</prenom>
+            <dateNaissance>2005-12-02</dateNaissance>
+            <email>ahmedhamdi@fss.tn</email>
+            <!-- ERREUR 15 : la filière XYZ n'existe pas (keyref refFiliereEtudiant) -->
+            <filiere>XYZ</filiere>
+            <niveau>3</niveau>
+            <moyenne>16.20</moyenne>
+        </etudiant>
+        <etudiant id="E003">
+            <!-- ERREUR 16 : mauvais ordre des éléments (prenom avant nom) -->
+            <prenom>hana</prenom>
+            <nom>benhmad</nom>
+            <dateNaissance>2006-07-21</dateNaissance>
+            <email>hanabenhmad@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>2</niveau>
+            <moyenne>9.80</moyenne>
+        </etudiant>
+    </etudiants>
+
+    <emploiDuTemps>
+        <seance id="SE01">
+            <matiereRef>M01</matiereRef>
+            <!-- ERREUR 17 : la salle S99 n'existe pas (keyref refSalleSeance) -->
+            <salleRef>S99</salleRef>
+            <!-- ERREUR 18 : jour non autorisé -->
+            <jour>Dimanche</jour>
+            <!-- ERREUR 19 : heure invalide (HH:MM entre 00:00 et 23:59) -->
+            <heureDebut>25:70</heureDebut>
+            <heureFin>10:00</heureFin>
+            <type>TP</type>
+        </seance>
+    </emploiDuTemps>
+
+    <bibliotheque>
+        <!-- ERREUR 20 : ISBN au mauvais format -->
+        <livre isbn="12345">
+            <titre>Initiation aux Bases de Données</titre>
+            <auteur>Ben Salah, Leila</auteur>
+            <annee>2020</annee>
+            <exemplairesDisponibles>5</exemplairesDisponibles>
+        </livre>
+    </bibliotheque>
+
+</universite>

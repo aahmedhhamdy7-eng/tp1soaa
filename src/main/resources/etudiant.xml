@@ -1,59 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <universite nom="Faculté des Sciences de Sfax" anneeUniversitaire="2026-2027">
-    <etudiants>
-        <etudiant id="E001" >
-            <nom>Messi </nom>
-            <prenom>Lionel</prenom>
-            <dateNaissance>2004-03-15</dateNaissance>
-            <email>lionelmessi@fss.tn</email>
-            <filiere>LSI</filiere>
-            <niveau>3</niveau>
-            <moyenne>20.00</moyenne>
-        </etudiant>
-        <etudiant id="E002" >
-            <nom>Ronaldo</nom>
-            <prenom>Cristiano</prenom>
-            <dateNaissance>2003-11-02</dateNaissance>
-            <email>cristiano@fss.tn</email>
-            <filiere>LSI</filiere>
-            <niveau>3</niveau>
-            <moyenne>1.00</moyenne>
-        </etudiant>
-        <etudiant id="E003" >
+    <departements>
+        <departement id="D01">
+            <nom>Informatique</nom>
+            <chefDepartementRef>P02</chefDepartementRef>
+        </departement>
+        <departement id="D02">
+            <nom>Mathématiques</nom>
+            <chefDepartementRef>P04</chefDepartementRef>
+        </departement>
+    </departements>
+    <filieres>
+        <filiere code="LSI">
+            <intitule>Licence en Systèmes d'Information</intitule>
+            <departementRef>D01</departementRef>
+            <responsableRef>P01</responsableRef>
+            <dureeAnnees>3</dureeAnnees>
+        </filiere>
+        <filiere code="ISI">
+            <intitule>Ingénierie des Systèmes d'Information</intitule>
+            <departementRef>D01</departementRef>
+            <responsableRef>P03</responsableRef>
+            <dureeAnnees>3</dureeAnnees>
+        </filiere>
+        <filiere code="DSI">
+            <intitule>Développement des Systèmes d'Information</intitule>
+            <departementRef>D01</departementRef>
+            <responsableRef>P02</responsableRef>
+            <dureeAnnees>3</dureeAnnees>
+        </filiere>
+        <filiere code="IIA">
+            <intitule>Informatique Industrielle et Automatique</intitule>
+            <departementRef>D01</departementRef>
+            <responsableRef>P05</responsableRef>
+            <dureeAnnees>3</dureeAnnees>
+        </filiere>
+    </filieres>
+    <enseignants>
+        <enseignant id="P01">
+            <nom>Trabelsi</nom>
+            <prenom>Mohamed</prenom>
+            <grade>Maître de Conférences</grade>
+            <specialite>Génie Logiciel</specialite>
+            <email>mohamed.trabelsi@fss.tn</email>
+            <departementRef>D01</departementRef>
+        </enseignant>
+        <enseignant id="P02">
+            <nom>Ben Salah</nom>
+            <prenom>Leila</prenom>
+            <grade>Professeur</grade>
+            <specialite>Bases de Données</specialite>
+            <email>leila.bensalah@fss.tn</email>
+            <departementRef>D01</departementRef>
+        </enseignant>
+        <enseignant id="P03">
             <nom>Gharbi</nom>
-            <prenom>Youssef</prenom>
-            <dateNaissance>2002-07-21</dateNaissance>
-            <email>youssef.gharbi@fss.tn</email>
-            <filiere>RSI</filiere>
+            <prenom>Karim</prenom>
+            <grade>Assistant</grade>
+            <specialite>Réseaux et Télécommunications</specialite>
+            <email>karim.gharbi@fss.tn</email>
+            <departementRef>D01</departementRef>
+        </enseignant>
+        <enseignant id="P04">
+            <nom>Jebali</nom>
+            <prenom>Sonia</prenom>
+            <grade>Maître Assistant</grade>
+            <specialite>Analyse Numérique</specialite>
+            <email>sonia.jebali@fss.tn</email>
+            <departementRef>D02</departementRef>
+        </enseignant>
+        <enseignant id="P05">
+            <nom>Chaabane</nom>
+            <prenom>Walid</prenom>
+            <grade>Maître de Conférences</grade>
+            <specialite>Automatique et Systèmes Embarqués</specialite>
+            <email>walid.chaabane@fss.tn</email>
+            <departementRef>D01</departementRef>
+        </enseignant>
+    </enseignants>
+    <matieres>
+        <matiere id="M01">
+            <intitule>Programmation Web</intitule>
+            <filiereRef>LSI</filiereRef>
+            <niveau>3</niveau>
+            <semestre>1</semestre>
+            <coefficient>2</coefficient>
+            <credits>4</credits>
+            <enseignantRef>P01</enseignantRef>
+        </matiere>
+        <matiere id="M02">
+            <intitule>Bases de Données Avancées</intitule>
+            <filiereRef>LSI</filiereRef>
+            <niveau>3</niveau>
+            <semestre>1</semestre>
+            <coefficient>3</coefficient>
+            <credits>5</credits>
+            <enseignantRef>P02</enseignantRef>
+        </matiere>
+        <matiere id="M03">
+            <intitule>Génie Logiciel</intitule>
+            <filiereRef>LSI</filiereRef>
+            <niveau>3</niveau>
+            <semestre>1</semestre>
+            <coefficient>2</coefficient>
+            <credits>4</credits>
+            <enseignantRef>P01</enseignantRef>
+        </matiere>
+        <matiere id="M04">
+            <intitule>Réseaux Informatiques</intitule>
+            <filiereRef>ISI</filiereRef>
+            <niveau>2</niveau>
+            <semestre>1</semestre>
+            <coefficient>2</coefficient>
+            <credits>4</credits>
+            <enseignantRef>P03</enseignantRef>
+        </matiere>
+        <matiere id="M05">
+            <intitule>Analyse Numérique</intitule>
+            <filiereRef>DSI</filiereRef>
+            <niveau>2</niveau>
+            <semestre>1</semestre>
+            <coefficient>2</coefficient>
+            <credits>3</credits>
+            <enseignantRef>P04</enseignantRef>
+        </matiere>
+        <matiere id="M06">
+            <intitule>Automatique</intitule>
+            <filiereRef>IIA</filiereRef>
+            <niveau>3</niveau>
+            <semestre>1</semestre>
+            <coefficient>3</coefficient>
+            <credits>5</credits>
+            <enseignantRef>P05</enseignantRef>
+        </matiere>
+        <matiere id="M07">
+            <intitule>Systèmes Embarqués</intitule>
+            <filiereRef>IIA</filiereRef>
+            <niveau>3</niveau>
+            <semestre>1</semestre>
+            <coefficient>2</coefficient>
+            <credits>4</credits>
+            <enseignantRef>P05</enseignantRef>
+        </matiere>
+    </matieres>
+    <salles>
+        <salle id="S01" type="Amphi">
+            <nom>Amphi A</nom>
+            <capacite>200</capacite>
+            <bloc>A</bloc>
+        </salle>
+        <salle id="S02" type="TD">
+            <nom>Salle TD 12</nom>
+            <capacite>35</capacite>
+            <bloc>B</bloc>
+        </salle>
+        <salle id="S03" type="Laboratoire">
+            <nom>Labo Informatique 1</nom>
+            <capacite>30</capacite>
+            <bloc>C</bloc>
+        </salle>
+        <salle id="S04" type="Laboratoire">
+            <nom>Labo Électronique</nom>
+            <capacite>25</capacite>
+            <bloc>C</bloc>
+        </salle>
+    </salles>
+    <etudiants>
+        <etudiant id="E001">
+            <nom>messi</nom>
+            <prenom>lionel</prenom>
+            <dateNaissance>2005-09-13</dateNaissance>
+            <email>lionelmessii@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>3</niveau>
+            <moyenne>20</moyenne>
+        </etudiant>
+        <etudiant id="E002">
+            <nom>hamdi</nom>
+            <prenom>ahmed</prenom>
+            <dateNaissance>2005-12-02</dateNaissance>
+            <email>ahmedhamdi@fss.tn</email>
+            <filiere>LSI</filiere>
+            <niveau>3</niveau>
+            <moyenne>16.20</moyenne>
+        </etudiant>
+        <etudiant id="E003">
+            <nom>jerbi</nom>
+            <prenom>mouna</prenom>
+            <dateNaissance>2006-07-21</dateNaissance>
+            <email>mounajerbi@fss.tn</email>
+            <filiere>ISI</filiere>
             <niveau>2</niveau>
             <moyenne>9.80</moyenne>
         </etudiant>
-        <etudiant id="E004" >
+        <etudiant id="E004">
             <nom>Mansour</nom>
             <prenom>Ines</prenom>
             <dateNaissance>2004-01-30</dateNaissance>
-            <email>ines.mansour@fss.tn</email>
+            <email>inesmansour@fss.tn</email>
             <filiere>DSI</filiere>
             <niveau>2</niveau>
             <moyenne>12.40</moyenne>
         </etudiant>
-        <etudiant id="E005" >
-            <nom>Jlassi</nom>
-            <prenom>Amine</prenom>
+        <etudiant id="E005">
+            <nom>feki</nom>
+            <prenom>ali</prenom>
             <dateNaissance>2003-05-09</dateNaissance>
-            <email>amine.jlassi@fss.tn</email>
+            <email>alifeki@fss.tn</email>
             <filiere>IIA</filiere>
             <niveau>3</niveau>
             <moyenne>15.10</moyenne>
         </etudiant>
-        <etudiant id="E006" >
+        <etudiant id="E006">
             <nom>Khlif</nom>
             <prenom>Rania</prenom>
             <dateNaissance>2002-12-12</dateNaissance>
-            <email>rania.khlif@fss.tn</email>
+            <email>raniakhlif@fss.tn</email>
             <filiere>LSI</filiere>
             <niveau>3</niveau>
             <moyenne>11.35</moyenne>
         </etudiant>
     </etudiants>
+    <emploiDuTemps>
+        <seance id="SE01">
+            <matiereRef>M01</matiereRef>
+            <salleRef>S03</salleRef>
+            <jour>Lundi</jour>
+            <heureDebut>08:30</heureDebut>
+            <heureFin>10:00</heureFin>
+            <type>TP</type>
+        </seance>
+        <seance id="SE02">
+            <matiereRef>M02</matiereRef>
+            <salleRef>S01</salleRef>
+            <jour>Mardi</jour>
+            <heureDebut>10:10</heureDebut>
+            <heureFin>11:40</heureFin>
+            <type>Cours</type>
+        </seance>
+        <seance id="SE03">
+            <matiereRef>M04</matiereRef>
+            <salleRef>S02</salleRef>
+            <jour>Mercredi</jour>
+            <heureDebut>08:30</heureDebut>
+            <heureFin>10:00</heureFin>
+            <type>TD</type>
+        </seance>
+        <seance id="SE04">
+            <matiereRef>M06</matiereRef>
+            <salleRef>S04</salleRef>
+            <jour>Jeudi</jour>
+            <heureDebut>14:00</heureDebut>
+            <heureFin>15:30</heureFin>
+            <type>TP</type>
+        </seance>
+    </emploiDuTemps>
+
+    <!-- ================= BIBLIOTHÈQUE ================= -->
+    <bibliotheque>
+        <livre isbn="978-2-01-000001-1">
+            <titre>Initiation aux Bases de Données</titre>
+            <auteur>Ben Salah, Leila</auteur>
+            <annee>2020</annee>
+            <exemplairesDisponibles>5</exemplairesDisponibles>
+        </livre>
+        <livre isbn="978-2-01-000002-8">
+            <titre>Génie Logiciel et Conception Objet</titre>
+            <auteur>Trabelsi, Mohamed</auteur>
+            <annee>2019</annee>
+            <exemplairesDisponibles>3</exemplairesDisponibles>
+        </livre>
+        <livre isbn="978-2-01-000003-5">
+            <titre>Automatique des Systèmes Linéaires</titre>
+            <auteur>Chaabane, Walid</auteur>
+            <annee>2021</annee>
+            <exemplairesDisponibles>2</exemplairesDisponibles>
+        </livre>
+    </bibliotheque>
+
 </universite>
